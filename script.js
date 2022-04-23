@@ -32,4 +32,21 @@ const changeTaskEstate = function (event) {
   event.target.classList.toggle("done"); // accede a la clase y la cambia a done
 };
 
+const order = function () {
+  const done = [];
+  const toDo = [];
+  taskContainer.childNodes.forEach((element) => {
+    if (element.classList.contains("done")) {
+      done.push(element);
+    } else {
+      toDo.push(element);
+    }
+  });
+  return [...toDo, ...done];
+};
+
+const renderOrderedTasks = function () {
+  order().forEach((element) => taskContainer.appendChild(element));
+};
+
 setDate();
