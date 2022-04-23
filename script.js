@@ -3,6 +3,7 @@ const dateNumber = document.querySelector(".dateNumber");
 const dateText = document.querySelector(".dateText");
 const dateMonth = document.querySelector(".dateMonth");
 const dateYear = document.querySelector(".dateYear");
+const orderButton = document.querySelector(".orderButton");
 
 // Task container
 const taskContainer = document.querySelector(".taskContainer");
@@ -36,17 +37,16 @@ const order = function () {
   const done = [];
   const toDo = [];
   taskContainer.childNodes.forEach((element) => {
-    if (element.classList.contains("done")) {
-      done.push(element);
-    } else {
-      toDo.push(element);
-    }
+    element.classList.contains("done")
+      ? done.push(element)
+      : toDo.push(element);
   });
   return [...toDo, ...done];
 };
 
 const renderOrderedTasks = function () {
-  order().forEach((element) => taskContainer.appendChild(element));
+  const orderedTask = order();
+  orderedTask.forEach((element) => taskContainer.appendChild(element));
 };
 
 setDate();
